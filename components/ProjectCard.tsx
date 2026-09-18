@@ -4,7 +4,7 @@ interface ProjectCardProps {
     technologies: string[];
     link?: string;
 }
-    
+
 export default function ProjectCard({ title, description, technologies, link }: ProjectCardProps) {
     return (
         <article className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg">
