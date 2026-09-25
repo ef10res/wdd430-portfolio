@@ -1,16 +1,19 @@
+import ProjectCard from '@/components/ProjectCard';
+import { getProjects } from '@/lib/projects-db';
 export default async function ProjectsOverview() {
-    const response = await fetch('http://localhost:3000/api/projects');
-
-    const projects = await response.json();
+    const projects = await getProjects();
     
     return (
         <main>
             <h1>All Projects</h1>
-            {projects.map((project: any) => (
-                <div key={project.id}>
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                </div>
+            {projects.map((project) => (
+                <ProjectCard
+                    key={project.id}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    link={project.link}
+                />
             ))}
         </main>
     );
